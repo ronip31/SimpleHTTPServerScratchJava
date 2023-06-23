@@ -1,6 +1,6 @@
-package com.corderfromscratch.httpserver.config;
+package com.coderfromscratch.httpserver.config;
 
-public class HttpConfigurationException extends RuntimeException{
+public class HttpConfigurationException extends RuntimeException {
 
     public HttpConfigurationException() {
     }

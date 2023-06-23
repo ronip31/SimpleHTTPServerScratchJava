@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batalha Naval</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Batalha Naval</h1>
+<table id="tabuleiro">
+</table>
+
+<script>
+    var tamanho = prompt("Informe o tamanho do tabuleiro:");
+    var navios = prompt("Informe a quantidade de navios:");
+
+    var tabuleiro = [];
+    for (var i = 0; i < tamanho; i++) {
+        var linha = [];
+        for (var j = 0; j < tamanho; j++) {
+            linha.push("~");
+        }
+        tabuleiro.push(linha);
+    }
+
+    var naviosRestantes = navios;
+
+    function exibirTabuleiro() {
+        var table = document.getElementById("tabuleiro");
+        table.innerHTML = "";
+
+        for (var i = 0; i < tamanho; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j < tamanho; j++) {
+                var cell = document.createElement("td");
+                cell.textContent = tabuleiro[i][j];
+                cell.onclick = function(i, j) {
+                    return function() {
+                        jogar(i, j);
+                    };
+                }(i, j);
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
+        }
+    }
+
+    function jogar(linha, coluna) {
+        if (tabuleiro[linha][coluna] === "N") {
+            tabuleiro[linha][coluna] = "X";
+            alert("Você acertou um navio!");
+
+            naviosRestantes--;
+            if (naviosRestantes === 0) {
+                alert("Parabéns! Você destruiu todos os navios.");
+            }
+        } else if (tabuleiro[linha][coluna] === "X") {
+            alert("Você já acertou essa posição antes.");
+        } else {
+            tabuleiro[linha][coluna] = "-";
+            alert("Você errou.");
+        }
+
+        exibirTabuleiro();
+    }
+
+    exibirTabuleiro();
+</script>
+</body>
+</html>

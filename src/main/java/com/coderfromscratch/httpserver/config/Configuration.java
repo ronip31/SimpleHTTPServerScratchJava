@@ -1,9 +1,9 @@
-package com.corderfromscratch.httpserver.config;
+package com.coderfromscratch.httpserver.config;
 
 public class Configuration {
 
-      private int port;
-      private String webroot;
+    private int port;
+    private String webroot;
 
     public int getPort() {
         return port;
